@@ -297,6 +297,94 @@ static struct notifier_block max_cpus_notifier = {
 	.notifier_call = max_cpus_notify,
 };
 
+static void delay_callback(struct cpuquiet_attribute *attr)
+{
+	unsigned long val;
+
+	if (attr) {
+		val = (*((unsigned long *)(attr->param)));
+		(*((unsigned long *)(attr->param))) = msecs_to_jiffies(val);
+	}
+}
+
+static void enable_callback(struct cpuquiet_attribute *attr)
+{
+	int disabled = -1;
+
+	mutex_lock(tegra3_cpu_lock);
+
+	if (!enable && cpq_state != TEGRA_CPQ_DISABLED) {
+		disabled = 1;
+		cpq_state = TEGRA_CPQ_DISABLED;
+	} else if (enable && cpq_state == TEGRA_CPQ_DISABLED) {
+		disabled = 0;
+		cpq_state = TEGRA_CPQ_IDLE;
+		tegra_cpu_set_speed_cap(NULL);
+	}
+
+	mutex_unlock(tegra3_cpu_lock);
+
+	if (disabled == -1)
+		return;
+
+	if (disabled == 1) {
+		cancel_delayed_work_sync(&cpuquiet_work);
+		pr_info("Tegra cpuquiet clusterswitch disabled\n");
+		cpuquiet_device_busy();
+	} else if (!disabled) {
+		pr_info("Tegra cpuquiet clusterswitch enabled\n");
+		cpuquiet_device_free();
+	}
+}
+
+CPQ_BASIC_ATTRIBUTE(no_lp, 0644, bool);
+CPQ_BASIC_ATTRIBUTE(idle_top_freq, 0644, uint);
+CPQ_BASIC_ATTRIBUTE(idle_bottom_freq, 0644, uint);
+CPQ_BASIC_ATTRIBUTE(mp_overhead, 0644, int);
+CPQ_ATTRIBUTE(up_delay, 0644, ulong, delay_callback);
+CPQ_ATTRIBUTE(down_delay, 0644, ulong, delay_callback);
+CPQ_ATTRIBUTE(enable, 0644, bool, enable_callback);
+
+static struct attribute *tegra_auto_attributes[] = {
+	&no_lp_attr.attr,
+	&up_delay_attr.attr,
+	&down_delay_attr.attr,
+	&idle_top_freq_attr.attr,
+	&idle_bottom_freq_attr.attr,
+	&mp_overhead_attr.attr,
+	&enable_attr.attr,
+	NULL,
+};
+
+static const struct sysfs_ops tegra_auto_sysfs_ops = {
+	.show = cpuquiet_auto_sysfs_show,
+	.store = cpuquiet_auto_sysfs_store,
+};
+
+static struct kobj_type ktype_sysfs = {
+	.sysfs_ops = &tegra_auto_sysfs_ops,
+	.default_attrs = tegra_auto_attributes,
+};
+
+static int tegra_auto_sysfs(void)
+{
+	int err;
+
+	tegra_auto_sysfs_kobject = kzalloc(sizeof(*tegra_auto_sysfs_kobject),
+					GFP_KERNEL);
+
+	if (!tegra_auto_sysfs_kobject)
+		return -ENOMEM;
+
+	err = cpuquiet_kobject_init(tegra_auto_sysfs_kobject, &ktype_sysfs,
+				"tegra_cpuquiet");
+
+	if (err)
+		kfree(tegra_auto_sysfs_kobject);
+
+	return err;
+}
+
 int tegra_auto_hotplug_init(struct mutex *cpu_lock)
 {
 	/*
