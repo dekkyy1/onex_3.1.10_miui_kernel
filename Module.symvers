@@ -1746,7 +1746,6 @@
 0x00000000	_raw_spin_unlock_irq	vmlinux	EXPORT_SYMBOL
 0x00000000	blk_queue_max_hw_sectors	vmlinux	EXPORT_SYMBOL
 0x00000000	bthp_supported_min_speed	vmlinux	EXPORT_SYMBOL
-0x00000000	tegra_edp_update_thermal_zone	vmlinux	EXPORT_SYMBOL_GPL
 0x00000000	rpc_debug	vmlinux	EXPORT_SYMBOL_GPL
 0x00000000	svc_xprt_enqueue	vmlinux	EXPORT_SYMBOL_GPL
 0x00000000	bus_create_file	vmlinux	EXPORT_SYMBOL_GPL
