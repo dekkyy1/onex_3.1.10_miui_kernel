@@ -520,17 +520,6 @@ config TEGRA_AUTO_HOTPLUG
 	  high/low power CPU clusters automatically, corresponding to
 	  CPU frequency scaling.
 
-config BEST_TRADE_HOTPLUG
-	bool "Hotplug depends on power-performance tradeoff"
-	depends on HOTPLUG_CPU && SMP
-	default n
-	help
-	  This option enables making decision of CPU hotplug
-	  bases on the tradeoff between power vs. performance.
-	  A good trade would retain overall system performance,
-	  as well as save battery life.
-
-
 config TEGRA_MC_EARLY_ACK
 	bool "Enable early acknowledgement from mermory controller"
 	depends on ARCH_TEGRA_3x_SOC
@@ -574,12 +563,6 @@ config TEGRA_CBUS_CLOCK_DIVIDER
         int "CBUS clock divider"
         default "2"
 
-config TEGRA_CONVSERVATIVE_GOV_ON_EARLYSUPSEND
-	bool "Use conservative cpu frequency governor when device enters early suspend"
-	depends on HAS_EARLYSUSPEND && CPU_FREQ
-	default n
-	help
-	 Also will restore to original cpu frequency governor when device is resumed
 
 config TEGRA_RUNNABLE_THREAD
 	bool "Tegra3 runnable thread hotplug"
