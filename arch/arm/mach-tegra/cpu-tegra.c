@@ -70,6 +70,21 @@ static DEFINE_MUTEX(tegra_cpu_lock);
 static bool is_suspended;
 static int suspend_index;
 
+unsigned int tegra_pmqos_cap_freq = CAP_CPU_FREQ_MAX;
+unsigned int tegra_pmqos_cpu_freq_limits[CONFIG_NR_CPUS] = {0, 0, 0, 0};
+
+// maxwen: see tegra_cpu_init
+// values can be changed in sysfs interface of cpufreq
+// for scaling_max_freq_limit
+static inline unsigned int get_cpu_freq_limit(unsigned int cpu)
+{
+	BUG_ON(cpu > 3);
+	if(tegra_pmqos_cpu_freq_limits[cpu]!=0){
+		return tegra_pmqos_cpu_freq_limits[cpu];
+	}
+	return tegra_pmqos_boost_freq;
+}
+
 static bool force_policy_max;
 
 static int force_policy_max_set(const char *arg, const struct kernel_param *kp)
@@ -1018,10 +1033,16 @@ static unsigned int arbitrated_max_freq (
     unsigned int target_freq
     )
 {
+
+// maxwen: apply all limits to a frequency
+static unsigned int get_scaled_freq (unsigned int target_freq)
+{
+	unsigned int save_freq = target_freq;
     /* chip-dependent, such as thermal throttle, edp, and user-defined freq. cap */
     target_freq = tegra_throttle_governor_speed (target_freq);
 	target_freq = edp_governor_speed (target_freq);
 	target_freq = user_cap_speed (target_freq);
+
 	target_freq = powersave_speed(target_freq);
 
     return target_freq;
@@ -1915,6 +1936,10 @@ unsigned int bthp_get_slowest_cpu_n (void) {
 	return cpu;
 }
 #endif
+	
+	//pr_info("get_scaled_freq cpu %d %d %d\n", cpu, save_freq, target_freq);
+    return target_freq;
+}
 
 int tegra_cpu_set_speed_cap(unsigned int *speed_cap)
 {
@@ -2018,6 +2043,7 @@ int tegra_cpu_set_speed_cap(unsigned int *speed_cap)
         }
     }
 #endif
+	new_speed = get_scaled_freq(new_speed);
 
 	if (speed_cap)
 		*speed_cap = new_speed;
@@ -2052,6 +2078,7 @@ int tegra_input_boost (
 {
     int ret = 0;
     unsigned int curfreq = 0;
+    unsigned int scaling_max_limit = 0;
 
     mutex_lock(&tegra_cpu_lock);
     curfreq = tegra_getspeed(0);
@@ -2059,6 +2086,15 @@ int tegra_input_boost (
     target_freq = edp_governor_speed(target_freq);
     target_freq = user_cap_speed(target_freq);
     target_freq = powersave_speed(target_freq);
+    target_freq = get_scaled_freq(target_freq);
+
+    /* get any per cpu defined limit cause input_boost
+     might not be validated against policy->max */
+    scaling_max_limit = get_cpu_freq_limit(cpu);
+
+    /* apply any scaling max limits */
+    if (scaling_max_limit < target_freq)
+        target_freq = scaling_max_limit;
 
     /* dont need to boost cpu at this moment */
     if (!curfreq || curfreq >= target_freq) {
@@ -2200,7 +2236,17 @@ static int tegra_cpu_init(struct cpufreq_policy *policy)
 	cpumask_copy(policy->related_cpus, cpu_possible_mask);
 
 	if (policy->cpu == 0) {
+		policy->max = get_cpu_freq_limit(policy->cpu);
+		policy->min = T3_CPU_MIN_FREQ;
 		register_pm_notifier(&tegra_cpu_pm_notifier);
+		pr_info("cpu-tegra_cpufreq: restored cpu[%d]'s freq: %u\n", policy->cpu, policy->max);
+	}
+
+    /* restore saved cpu frequency */
+    if (policy->cpu > 0) {
+		policy->max = get_cpu_freq_limit(policy->cpu);
+		tegra_update_cpu_speed(policy->max);
+		pr_info("cpu-tegra_cpufreq: restored cpu[%d]'s freq: %u\n", policy->cpu, policy->max);
 	}
 
 	return 0;
