@@ -935,7 +935,7 @@ static int tegra_cpufreq_resume(struct cpufreq_policy *policy)
 {
 	/*if it's a power key wakeup, uncap the cpu powersave mode for future boost*/
 	if (wake_reason_resume == 0x80)
-		policy->max = 1700000;
+		policy->max = tegra_pmqos_boost_freq;
 	return 0;
 }
 
@@ -956,9 +956,10 @@ static struct cpufreq_driver tegra_cpufreq_driver = {
 static void tegra_cpufreq_powersave_early_suspend(struct early_suspend *h)
 {
 	if(perf_early_suspend == 0){
-		pr_info("tegra_cpufreq_powersave_early_suspend: cap cpu freq to 475MHz\n");
-		pm_qos_update_request(&cap_cpu_freq_req, (s32)CAP_CPU_FREQ_MAX);
-		CAP_CPU_FREQ_TARGET = CAP_CPU_FREQ_MAX;
+        pr_info("tegra_cpufreq_early_suspend: cap cpu freq to %u\n",
+                tegra_pmqos_cap_freq);
+        pm_qos_update_request(&cap_cpu_freq_req, (s32)tegra_pmqos_cap_freq);
+		CAP_CPU_FREQ_TARGET = tegra_pmqos_cap_freq;
 	}
 
 	enter_early_suspend = 1;
