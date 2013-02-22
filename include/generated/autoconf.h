@@ -24,7 +24,8 @@
 #define __enabled_CONFIG_SCSI_DMA_MODULE 0
 #define __enabled_CONFIG_TCP_MD5SIG 0
 #define __enabled_CONFIG_TCP_MD5SIG_MODULE 0
-#define __enabled_CONFIG_KERNEL_GZIP 0
+#define CONFIG_KERNEL_GZIP 1
+#define __enabled_CONFIG_KERNEL_GZIP 1
 #define __enabled_CONFIG_KERNEL_GZIP_MODULE 0
 #define __enabled_CONFIG_TOUCHSCREEN_INEXIO 0
 #define __enabled_CONFIG_TOUCHSCREEN_INEXIO_MODULE 0
@@ -1161,9 +1162,6 @@
 #define __enabled_CONFIG_HAS_WAKELOCK_MODULE 0
 #define __enabled_CONFIG_LOGO 0
 #define __enabled_CONFIG_LOGO_MODULE 0
-#define CONFIG_KERNEL_XZ 1
-#define __enabled_CONFIG_KERNEL_XZ 1
-#define __enabled_CONFIG_KERNEL_XZ_MODULE 0
 #define CONFIG_USB_STORAGE 1
 #define __enabled_CONFIG_USB_STORAGE 1
 #define __enabled_CONFIG_USB_STORAGE_MODULE 0
@@ -2012,9 +2010,6 @@
 #define CONFIG_MFD_CORE 1
 #define __enabled_CONFIG_MFD_CORE 1
 #define __enabled_CONFIG_MFD_CORE_MODULE 0
-#define CONFIG_HAVE_KERNEL_XZ 1
-#define __enabled_CONFIG_HAVE_KERNEL_XZ 1
-#define __enabled_CONFIG_HAVE_KERNEL_XZ_MODULE 0
 #define CONFIG_TEGRA_DC_EXTENSIONS 1
 #define __enabled_CONFIG_TEGRA_DC_EXTENSIONS 1
 #define __enabled_CONFIG_TEGRA_DC_EXTENSIONS_MODULE 0
@@ -3610,6 +3605,8 @@
 #define __enabled_CONFIG_TEGRA_BB_SUPPORT_MODULE 0
 #define __enabled_CONFIG_KEYBOARD_TCA6416 0
 #define __enabled_CONFIG_KEYBOARD_TCA6416_MODULE 0
+#define __enabled_CONFIG_TEGRA_RUNNABLE_THREAD 0
+#define __enabled_CONFIG_TEGRA_RUNNABLE_THREAD_MODULE 0
 #define CONFIG_NF_CONNTRACK_TFTP 1
 #define __enabled_CONFIG_NF_CONNTRACK_TFTP 1
 #define __enabled_CONFIG_NF_CONNTRACK_TFTP_MODULE 0
