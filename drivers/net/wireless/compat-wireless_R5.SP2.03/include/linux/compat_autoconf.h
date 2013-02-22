@@ -3,7 +3,6 @@
 /*
  * Automatically generated C config: don't edit
  * 五  1月 25 14:23:52 CST 2013 
- * Tue Feb 19 16:04:55 CET 2013 
  * compat-wireless-2.6: ol_R5.00.14
  * linux-2.6: ol_R5.00.21-23-g618c7e5
  */
