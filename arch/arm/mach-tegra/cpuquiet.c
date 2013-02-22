@@ -176,8 +176,6 @@ static void tegra_cpuquiet_work_func(struct work_struct *work)
 
 	mutex_unlock(tegra3_cpu_lock);
 
-	if (update_cr_config)
-
 	if (device_busy == 1) {
 		cpuquiet_device_busy();
 	} else if (!device_busy) {
