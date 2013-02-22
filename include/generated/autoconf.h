@@ -1161,8 +1161,7 @@
 #define __enabled_CONFIG_HAS_WAKELOCK_MODULE 0
 #define __enabled_CONFIG_LOGO 0
 #define __enabled_CONFIG_LOGO_MODULE 0
-#define CONFIG_KERNEL_XZ 1
-#define __enabled_CONFIG_KERNEL_XZ 1
+#define __enabled_CONFIG_KERNEL_XZ 0
 #define __enabled_CONFIG_KERNEL_XZ_MODULE 0
 #define CONFIG_USB_STORAGE 1
 #define __enabled_CONFIG_USB_STORAGE 1
@@ -1524,7 +1523,8 @@
 #define __enabled_CONFIG_I2C_PIIX4_MODULE 0
 #define __enabled_CONFIG_INET_IPCOMP 0
 #define __enabled_CONFIG_INET_IPCOMP_MODULE 0
-#define __enabled_CONFIG_KERNEL_LZMA 0
+#define CONFIG_KERNEL_LZMA 1
+#define __enabled_CONFIG_KERNEL_LZMA 1
 #define __enabled_CONFIG_KERNEL_LZMA_MODULE 0
 #define __enabled_CONFIG_ARCH_S3C64XX 0
 #define __enabled_CONFIG_ARCH_S3C64XX_MODULE 0
