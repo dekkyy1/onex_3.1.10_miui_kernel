@@ -155,8 +155,7 @@
 #define __enabled_CONFIG_SCSI_DH_MODULE 0
 #define __enabled_CONFIG_SCSI_LOGGING 0
 #define __enabled_CONFIG_SCSI_LOGGING_MODULE 0
-#define CONFIG_TEGRA_AUTO_HOTPLUG 1
-#define __enabled_CONFIG_TEGRA_AUTO_HOTPLUG 1
+#define __enabled_CONFIG_TEGRA_AUTO_HOTPLUG 0
 #define __enabled_CONFIG_TEGRA_AUTO_HOTPLUG_MODULE 0
 #define __enabled_CONFIG_SAMPLES 0
 #define __enabled_CONFIG_SAMPLES_MODULE 0
@@ -226,8 +225,7 @@
 #define __enabled_CONFIG_HID_SPEEDLINK_MODULE 0
 #define __enabled_CONFIG_BLK_DEV_NBD 0
 #define __enabled_CONFIG_BLK_DEV_NBD_MODULE 0
-#define CONFIG_ARM_UNWIND 1
-#define __enabled_CONFIG_ARM_UNWIND 1
+#define __enabled_CONFIG_ARM_UNWIND 0
 #define __enabled_CONFIG_ARM_UNWIND_MODULE 0
 #define CONFIG_HID_ROCCAT_KOVAPLUS 1
 #define __enabled_CONFIG_HID_ROCCAT_KOVAPLUS 1
@@ -623,8 +621,7 @@
 #define CONFIG_RAWCHIP_ENABLE 1
 #define __enabled_CONFIG_RAWCHIP_ENABLE 1
 #define __enabled_CONFIG_RAWCHIP_ENABLE_MODULE 0
-#define CONFIG_IOMMU_SUPPORT 1
-#define __enabled_CONFIG_IOMMU_SUPPORT 1
+#define __enabled_CONFIG_IOMMU_SUPPORT 0
 #define __enabled_CONFIG_IOMMU_SUPPORT_MODULE 0
 #define CONFIG_HID_BELKIN 1
 #define __enabled_CONFIG_HID_BELKIN 1
@@ -1378,6 +1375,8 @@
 #define CONFIG_USB_SERIAL_BASEBAND_MODULE 1
 #define __enabled_CONFIG_USB_SERIAL_BASEBAND 0
 #define __enabled_CONFIG_USB_SERIAL_BASEBAND_MODULE 1
+#define __enabled_CONFIG_CIFS_XATTR 0
+#define __enabled_CONFIG_CIFS_XATTR_MODULE 0
 #define CONFIG_CPU_CACHE_VIPT 1
 #define __enabled_CONFIG_CPU_CACHE_VIPT 1
 #define __enabled_CONFIG_CPU_CACHE_VIPT_MODULE 0
@@ -1513,7 +1512,8 @@
 #define __enabled_CONFIG_MAX1749_VIBRATOR_MODULE 0
 #define __enabled_CONFIG_MFD_MAX8998 0
 #define __enabled_CONFIG_MFD_MAX8998_MODULE 0
-#define __enabled_CONFIG_CPU_FREQ_GOV_USERSPACE 0
+#define CONFIG_CPU_FREQ_GOV_USERSPACE 1
+#define __enabled_CONFIG_CPU_FREQ_GOV_USERSPACE 1
 #define __enabled_CONFIG_CPU_FREQ_GOV_USERSPACE_MODULE 0
 #define __enabled_CONFIG_SND_CA0106 0
 #define __enabled_CONFIG_SND_CA0106_MODULE 0
@@ -1918,9 +1918,6 @@
 #define __enabled_CONFIG_TOUCHSCREEN_MCS5000_MODULE 0
 #define __enabled_CONFIG_SECURITYFS 0
 #define __enabled_CONFIG_SECURITYFS_MODULE 0
-#define CONFIG_DEFAULT_CFQ 1
-#define __enabled_CONFIG_DEFAULT_CFQ 1
-#define __enabled_CONFIG_DEFAULT_CFQ_MODULE 0
 #define CONFIG_INET6_XFRM_MODE_TUNNEL 1
 #define __enabled_CONFIG_INET6_XFRM_MODE_TUNNEL 1
 #define __enabled_CONFIG_INET6_XFRM_MODE_TUNNEL_MODULE 0
@@ -2003,8 +2000,7 @@
 #define __enabled_CONFIG_GENERIC_CLOCKEVENTS_MODULE 0
 #define __enabled_CONFIG_ROMFS_FS 0
 #define __enabled_CONFIG_ROMFS_FS_MODULE 0
-#define CONFIG_IOSCHED_CFQ 1
-#define __enabled_CONFIG_IOSCHED_CFQ 1
+#define __enabled_CONFIG_IOSCHED_CFQ 0
 #define __enabled_CONFIG_IOSCHED_CFQ_MODULE 0
 #define CONFIG_LIB80211_MODULE 1
 #define __enabled_CONFIG_LIB80211 0
@@ -2102,7 +2098,8 @@
 #define __enabled_CONFIG_USB_CSW_HACK_MODULE 0
 #define __enabled_CONFIG_CHARGER_GPIO 0
 #define __enabled_CONFIG_CHARGER_GPIO_MODULE 0
-#define __enabled_CONFIG_CPUQUIET_FRAMEWORK 0
+#define CONFIG_CPUQUIET_FRAMEWORK 1
+#define __enabled_CONFIG_CPUQUIET_FRAMEWORK 1
 #define __enabled_CONFIG_CPUQUIET_FRAMEWORK_MODULE 0
 #define __enabled_CONFIG_SENSORS_ADT7462 0
 #define __enabled_CONFIG_SENSORS_ADT7462_MODULE 0
@@ -2567,6 +2564,8 @@
 #define __enabled_CONFIG_SERIAL_CORE_CONSOLE_MODULE 0
 #define __enabled_CONFIG_HUGETLB_PAGE 0
 #define __enabled_CONFIG_HUGETLB_PAGE_MODULE 0
+#define __enabled_CONFIG_CIFS_WEAK_PW_HASH 0
+#define __enabled_CONFIG_CIFS_WEAK_PW_HASH_MODULE 0
 #define __enabled_CONFIG_TOUCHSCREEN_GUNZE 0
 #define __enabled_CONFIG_TOUCHSCREEN_GUNZE_MODULE 0
 #define __enabled_CONFIG_SENSORS_LM78 0
@@ -2887,6 +2886,9 @@
 #define __enabled_CONFIG_SND_HDA_CODEC_HDMI 1
 #define __enabled_CONFIG_SND_HDA_CODEC_HDMI_MODULE 0
 #define CONFIG_LOG_BUF_SHIFT 17
+#define CONFIG_OLD_MCOUNT 1
+#define __enabled_CONFIG_OLD_MCOUNT 1
+#define __enabled_CONFIG_OLD_MCOUNT_MODULE 0
 #define __enabled_CONFIG_SND_CMIPCI 0
 #define __enabled_CONFIG_SND_CMIPCI_MODULE 0
 #define __enabled_CONFIG_INTEL_MID_PTI 0
@@ -3162,6 +3164,9 @@
 #define __enabled_CONFIG_ARCH_DOVE_MODULE 0
 #define __enabled_CONFIG_SCSI_SRP_ATTRS 0
 #define __enabled_CONFIG_SCSI_SRP_ATTRS_MODULE 0
+#define CONFIG_FRAME_POINTER 1
+#define __enabled_CONFIG_FRAME_POINTER 1
+#define __enabled_CONFIG_FRAME_POINTER_MODULE 0
 #define CONFIG_BT_HIDP_MODULE 1
 #define __enabled_CONFIG_BT_HIDP 0
 #define __enabled_CONFIG_BT_HIDP_MODULE 1
@@ -3209,8 +3214,7 @@
 #define CONFIG_DEBUG_FS 1
 #define __enabled_CONFIG_DEBUG_FS 1
 #define __enabled_CONFIG_DEBUG_FS_MODULE 0
-#define CONFIG_ARM_THUMBEE 1
-#define __enabled_CONFIG_ARM_THUMBEE 1
+#define __enabled_CONFIG_ARM_THUMBEE 0
 #define __enabled_CONFIG_ARM_THUMBEE_MODULE 0
 #define __enabled_CONFIG_ARCH_TCC_926 0
 #define __enabled_CONFIG_ARCH_TCC_926_MODULE 0
@@ -3238,6 +3242,8 @@
 #define __enabled_CONFIG_SENSORS_W83795_MODULE 0
 #define __enabled_CONFIG_USB_DUMMY_HCD 0
 #define __enabled_CONFIG_USB_DUMMY_HCD_MODULE 0
+#define __enabled_CONFIG_CIFS_DEBUG2 0
+#define __enabled_CONFIG_CIFS_DEBUG2_MODULE 0
 #define __enabled_CONFIG_INPUT_ATI_REMOTE2 0
 #define __enabled_CONFIG_INPUT_ATI_REMOTE2_MODULE 0
 #define __enabled_CONFIG_CNIC 0
@@ -4453,6 +4459,9 @@
 #define CONFIG_NF_DEFRAG_IPV6 1
 #define __enabled_CONFIG_NF_DEFRAG_IPV6 1
 #define __enabled_CONFIG_NF_DEFRAG_IPV6_MODULE 0
+#define CONFIG_TEGRA_EDP_EXACT_FREQ 1
+#define __enabled_CONFIG_TEGRA_EDP_EXACT_FREQ 1
+#define __enabled_CONFIG_TEGRA_EDP_EXACT_FREQ_MODULE 0
 #define CONFIG_VIDEO_DEV 1
 #define __enabled_CONFIG_VIDEO_DEV 1
 #define __enabled_CONFIG_VIDEO_DEV_MODULE 0
@@ -4827,6 +4836,8 @@
 #define CONFIG_PPP_BSDCOMP 1
 #define __enabled_CONFIG_PPP_BSDCOMP 1
 #define __enabled_CONFIG_PPP_BSDCOMP_MODULE 0
+#define __enabled_CONFIG_CIFS_STATS 0
+#define __enabled_CONFIG_CIFS_STATS_MODULE 0
 #define CONFIG_RT_MUTEXES 1
 #define __enabled_CONFIG_RT_MUTEXES 1
 #define __enabled_CONFIG_RT_MUTEXES_MODULE 0
@@ -5097,7 +5108,7 @@
 #define CONFIG_USB_OTG_HOST 1
 #define __enabled_CONFIG_USB_OTG_HOST 1
 #define __enabled_CONFIG_USB_OTG_HOST_MODULE 0
-#define CONFIG_DEFAULT_IOSCHED "cfq"
+#define CONFIG_DEFAULT_IOSCHED "deadline"
 #define CONFIG_USB_EHCI_TEGRA 1
 #define __enabled_CONFIG_USB_EHCI_TEGRA 1
 #define __enabled_CONFIG_USB_EHCI_TEGRA_MODULE 0
@@ -5743,7 +5754,8 @@
 #define __enabled_CONFIG_USB_NET_DM9601_MODULE 0
 #define __enabled_CONFIG_LDM_PARTITION 0
 #define __enabled_CONFIG_LDM_PARTITION_MODULE 0
-#define __enabled_CONFIG_CIFS 0
+#define CONFIG_CIFS 1
+#define __enabled_CONFIG_CIFS 1
 #define __enabled_CONFIG_CIFS_MODULE 0
 #define CONFIG_XFRM_USER 1
 #define __enabled_CONFIG_XFRM_USER 1
@@ -5989,7 +6001,8 @@
 #define __enabled_CONFIG_SENSE_4_PLUS 1
 #define __enabled_CONFIG_SENSE_4_PLUS_MODULE 0
 #define CONFIG_ANDROID_RAM_CONSOLE_ERROR_CORRECTION_SYMBOL_SIZE 8
-#define __enabled_CONFIG_TEGRA_EDP_LIMITS 0
+#define CONFIG_TEGRA_EDP_LIMITS 1
+#define __enabled_CONFIG_TEGRA_EDP_LIMITS 1
 #define __enabled_CONFIG_TEGRA_EDP_LIMITS_MODULE 0
 #define CONFIG_NETFILTER_XT_MATCH_QTAGUID 1
 #define __enabled_CONFIG_NETFILTER_XT_MATCH_QTAGUID 1
@@ -6277,7 +6290,8 @@
 #define CONFIG_REGMAP 1
 #define __enabled_CONFIG_REGMAP 1
 #define __enabled_CONFIG_REGMAP_MODULE 0
-#define __enabled_CONFIG_NLS_UTF8 0
+#define CONFIG_NLS_UTF8 1
+#define __enabled_CONFIG_NLS_UTF8 1
 #define __enabled_CONFIG_NLS_UTF8_MODULE 0
 #define CONFIG_JOYSTICK_XPAD 1
 #define __enabled_CONFIG_JOYSTICK_XPAD 1
@@ -6359,8 +6373,7 @@
 #define __enabled_CONFIG_TEGRA_CORE_DVFS_MODULE 0
 #define __enabled_CONFIG_NET_SCH_HFSC 0
 #define __enabled_CONFIG_NET_SCH_HFSC_MODULE 0
-#define CONFIG_BEST_TRADE_HOTPLUG 1
-#define __enabled_CONFIG_BEST_TRADE_HOTPLUG 1
+#define __enabled_CONFIG_BEST_TRADE_HOTPLUG 0
 #define __enabled_CONFIG_BEST_TRADE_HOTPLUG_MODULE 0
 #define __enabled_CONFIG_RTC_DRV_RV3029C2 0
 #define __enabled_CONFIG_RTC_DRV_RV3029C2_MODULE 0
@@ -6476,8 +6489,6 @@
 #define __enabled_CONFIG_NF_CONNTRACK_MODULE 0
 #define __enabled_CONFIG_FB_NVIDIA 0
 #define __enabled_CONFIG_FB_NVIDIA_MODULE 0
-#define __enabled_CONFIG_TEGRA_IOMMU_SMMU 0
-#define __enabled_CONFIG_TEGRA_IOMMU_SMMU_MODULE 0
 #define CONFIG_LCD_CLASS_DEVICE 1
 #define __enabled_CONFIG_LCD_CLASS_DEVICE 1
 #define __enabled_CONFIG_LCD_CLASS_DEVICE_MODULE 0
@@ -6562,7 +6573,8 @@
 #define CONFIG_SND_HDA_ENABLE_REALTEK_QUIRKS 1
 #define __enabled_CONFIG_SND_HDA_ENABLE_REALTEK_QUIRKS 1
 #define __enabled_CONFIG_SND_HDA_ENABLE_REALTEK_QUIRKS_MODULE 0
-#define __enabled_CONFIG_DEFAULT_DEADLINE 0
+#define CONFIG_DEFAULT_DEADLINE 1
+#define __enabled_CONFIG_DEFAULT_DEADLINE 1
 #define __enabled_CONFIG_DEFAULT_DEADLINE_MODULE 0
 #define __enabled_CONFIG_USB_SERIAL_SYMBOL 0
 #define __enabled_CONFIG_USB_SERIAL_SYMBOL_MODULE 0
